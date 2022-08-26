@@ -1,0 +1,21 @@
+{% extends "blog/base.html" %}
+{% block content %}
+<form method="POST">{% csrf_token %}
+    <div class="row m-2 justify-content-center">
+        <div class="col col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <div class="card shadow rounded">
+                <div class="card-header text-info">
+                    <strong><i class="fas fa-trash-alt mr-2"></i>Confirm Delete</strong>
+                </div>
+                <div class="card-body py-2 text-muted">
+                    Are you sure you want to delete the post <strong class="mt-1 mb-1 text-muted">"{{ object.title }}"</strong> ?
+                    <div class="my-2">
+                        <button class="btn btn-sm btn-danger m-1 float-right" type="submit">Yes, Delete</button>
+                        <a class="btn btn-sm btn-outline-info m-1 float-right" href="{% url 'post-detail' object.id %}">Cancel</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock content %}

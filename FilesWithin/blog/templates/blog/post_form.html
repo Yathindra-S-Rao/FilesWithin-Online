@@ -1,0 +1,24 @@
+{% extends "blog/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="content-section col-lg-6 col-md-6 m-2 shadow">
+
+        <form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
+
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4 text-info">
+                Post
+                </legend>
+                {{ form|crispy }}
+            </fieldset>
+
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit"><i class="fas fa-upload mr-2"></i>Upload</button>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+{% endblock content %}

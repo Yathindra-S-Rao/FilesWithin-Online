@@ -1,0 +1,64 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+<p>Posts containing '{{query_string}}'</p> 
+{% for post in posts %}
+    <div>
+        <span> {{ post.created }} </span>
+        <a href="{% url 'post-detail' slug=post.slug %}"><h2 class="page-title">{{ post.title }}</h2></a>
+        <div class="post">
+            {{ post.body|safe }}
+        </div>
+    </div>
+
+<!--<article class="media mt-3 mb-3 content-section shadow rounded">-->
+<!--    <a href="{{ post.author.profile.image.url }} " target="_blank"> <img src="{{ post.author.profile.image.url }}  " alt="" class="article-img rounded-circle img-thumbnail img-fluid shadow">-->
+<!--    </a>-->
+<!--    <div class="media-body">-->
+<!--        <div class="article-metadata d-flex justify-content-between">-->
+<!--            <h4 class="mb-0"><a class="mr-2 text-info" href="{% url 'user-posts' post.author.username  %}">{{ post.author }}</a></h4>-->
+<!--            <small class="text-muted">{{ post.date_upload|date:"F d, Y" }}</small>-->
+<!--        </div>-->
+
+<!--        {% if post.file %}-->
+<!--        <a href="{{ post.file.url }}"  download class="text-dark text-justify "><h5>{{ post.blog }}</h5></a>-->
+<!--        {% endif %}-->
+
+
+
+<!--        <a class="article-title text-justify" href="{% url 'post-detail' post.id %}"><strong>{{ post.title }}</strong></a>-->
+<!--        <div class="d-flex justify-content-between mb-0">-->
+<!--            <p class="article-content text-justify text-truncate overflow-hidden">{{ post.content }}</p>-->
+<!--            {% if post.file %}-->
+<!--            <div class="form-group float-right mb-0">-->
+<!--                <a class="btn btn-outline-info btn-d"  href="{{ post.file.url }}"  download type="submit">-->
+<!--                <i class="fas fa-download"></i></a>-->
+<!--            </div>-->
+<!--            {% endif %}-->
+<!--        </div>-->
+
+<!--    </div>-->
+
+<!--</article>-->
+<!--{% endfor %}-->
+
+<!--{% if is_paginated %}-->
+<!--    {% if page_obj.has_previous %}-->
+<!--    <a class="btn btn-sm btn-outline-info mb-4" href="?page=1"><i class="fas fa-angle-double-left"></i></a>-->
+<!--    <a class="btn btn-sm btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}"><i class="fas fa-angle-left"></i></a>-->
+<!--    {% endif %}-->
+
+<!--    {% for num in page_obj.paginator.page_range %}-->
+<!--        {% if page_obj.number == num %}-->
+<!--        <a class="btn btn-sm btn-info mb-4" href="?page={{ num }}">{{ num }}</a>-->
+<!--        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}-->
+<!--        <a class="btn btn-sm btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>-->
+<!--        {% endif %}-->
+<!--    {% endfor %}-->
+
+<!--    {% if page_obj.has_next %}-->
+<!--    <a class="btn btn-sm btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}"><i class="fas fa-angle-right"></i></a>-->
+<!--    <a class="btn btn-sm btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}"><i class="fas fa-angle-double-right"></i></a>-->
+<!--    {% endif %}-->
+<!--{% endif %}-->
+
+{% endblock content %}
